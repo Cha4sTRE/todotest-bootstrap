@@ -1,0 +1,11 @@
+services:
+  todotest-build:
+    build: .
+    ports:
+      - 9090:80
+  
+  todotest-hub:
+    image: j3ffer/todotest-bootstrap
+    ports:
+      - 8081:80
+    
