@@ -70,10 +70,6 @@ async function crearTarea(event) {
   const priority = parseInt(document.getElementById("priority").value);
   const dueAt = document.getElementById("dueAt").value;
 
-  if (!title || !description) {
-    mostrarAlerta("⚠️ Por favor, completa el título y la descripción.", "warning");
-    return;
-  }
 
   const nuevaTarea = {
     title,
@@ -91,11 +87,9 @@ async function crearTarea(event) {
 
     if (!res.ok) throw new Error(`Error HTTP ${res.status}`);
 
-    mostrarAlerta("✅ Tarea creada exitosamente!", "success");
     mostrarLista();
   } catch (error) {
     console.error("Error al crear la tarea:", error);
-    mostrarAlerta("❌ Error al crear la tarea: " + error.message, "danger");
   }
 }
 
@@ -118,7 +112,6 @@ async function mostrarLista() {
     renderizarTareas(tareas);
   } catch (error) {
     console.error("No se pudieron obtener las tareas:", error);
-    mostrarAlerta("❌ Error al cargar las tareas: " + error.message, "danger");
   }
 }
 
